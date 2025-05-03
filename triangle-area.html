@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Үшбұрыш ауданы</title>
+  <style>
+    :root {
+      --main-color: #2e8b57;
+      --hover-color: #246b45;
+      --white: #fff;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0fff0;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      color: var(--main-color);
+      text-align: center;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: var(--main-color);
+      color: var(--white);
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      margin-top: 1.5rem;
+      width: 100%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: var(--hover-color);
+    }
+    .result {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      text-align: center;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Үшбұрыштың ауданын есептеу</h1>
+  <div class="container">
+    <label for="base">Табан ұзындығы (a):</label>
+    <input type="number" id="base" placeholder="мысалы, 5" />
+
+    <label for="height">Биіктігі (h):</label>
+    <input type="number" id="height" placeholder="мысалы, 3" />
+
+    <button onclick="calculateArea()">Есептеу</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateArea() {
+      const base = parseFloat(document.getElementById('base').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(base) || isNaN(height) || base <= 0 || height <= 0) {
+        resultDiv.textContent = 'Қате: Дұрыс сандар енгізіңіз!';
+        resultDiv.style.color = 'red';
+        return;
+      }
+
+      const area = 0.5 * base * height;
+      resultDiv.textContent = `Үшбұрыш ауданы: ${area.toFixed(2)} кв. бірлік`;
+      resultDiv.style.color = 'green';
+    }
+  </script>
+</body>
+</html>

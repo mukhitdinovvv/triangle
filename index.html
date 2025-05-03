@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Геометрия Нұсқаулық</title>
+  <style>
+    :root {
+      --main-color: #2e8b57;
+      --hover-color: #246b45;
+      --white: #fff;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0fff0;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    header {
+      background-color: var(--main-color);
+      color: var(--white);
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 3rem;
+      padding-top: 4rem;
+      gap: 1.5rem;
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .button {
+      background-color: var(--main-color);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .button:hover {
+      background-color: var(--hover-color);
+      transform: scale(1.02);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Геометрия: Үшбұрыш Формулалар
+  </header>
+  <main>
+    <button class="button" onclick="window.open('guide.html', '_blank')">Нұсқаулық</button>
+    <button class="button" onclick="window.location.href='triangle-area.html'">Есептер шығару</button>
+  </main>
+</body>
+</html>
