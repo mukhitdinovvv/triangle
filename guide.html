@@ -2,7 +2,7 @@
 <html lang="kk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Геометриялық Гайд</title>
   <style>
     html, body {
@@ -10,19 +10,34 @@
       padding: 0;
       height: 100%;
       overflow: hidden;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      touch-action: manipulation;
     }
 
     iframe {
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       border: none;
+      display: block;
+    }
+    
+    /* Дополнительные стили для лучшего отображения на мобильных */
+    @media screen and (max-width: 600px) {
+      iframe {
+        min-height: 100vh;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     }
   </style>
 </head>
 <body>
 
   <iframe 
-    src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true">
+    src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true"
+    allow="fullscreen"
+    loading="eager">
   </iframe>
 
 </body>
