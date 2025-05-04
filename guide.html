@@ -2,8 +2,7 @@
 <html lang="kk">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Геометриялық Гайд</title>
   <style>
     html, body {
@@ -12,10 +11,10 @@
       height: 100%;
       overflow: hidden;
       -webkit-text-size-adjust: 100%;
-      -moz-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
-      text-size-adjust: 100%;
+      touch-action: manipulation;
     }
+
     iframe {
       width: 100%;
       height: 100%;
@@ -23,30 +22,10 @@
       display: block;
     }
   </style>
-  <script type="text/javascript">
-    // Принудительно добавляем мобильный параметр к URL
-    function addMobileParam() {
-      var iframe = document.querySelector('iframe');
-      var src = iframe.src;
-      
-      // Проверяем, нет ли уже параметра mobile
-      if(src.indexOf('mobile=') === -1) {
-        // Добавляем параметр mobile=true для мобильного вида
-        if(src.indexOf('?') === -1) {
-          iframe.src = src + '?mobile=true';
-        } else {
-          iframe.src = src + '&mobile=true';
-        }
-      }
-    }
-    
-    // Вызываем функцию при загрузке страницы
-    window.onload = addMobileParam;
-  </script>
 </head>
 <body>
   <iframe 
-    src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true"
+    src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true&rm=minimal&mobile=true"
     allowfullscreen>
   </iframe>
 </body>
