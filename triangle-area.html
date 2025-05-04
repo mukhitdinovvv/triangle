@@ -3,94 +3,184 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Үшбұрыш ауданы</title>
+  <title>Үшбұрыш ауданын есептеу</title>
   <style>
-    :root {
-      --main-color: #2e8b57;
-      --hover-color: #246b45;
-      --white: #fff;
-    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0fff0;
-      margin: 0;
-      padding: 2rem;
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      padding: 20px;
     }
     h1 {
-      color: var(--main-color);
       text-align: center;
+      color: #1e90ff;
     }
-    .container {
-      max-width: 400px;
-      margin: 0 auto;
+    .method {
+      background-color: #e6f7ff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #b3e0ff;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    .method:hover {
+      background-color: #cceeff;
+    }
+    .calc {
+      display: none;
       background: #ffffff;
-      padding: 2rem;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    label {
-      display: block;
-      margin-top: 1rem;
-    }
-    input {
-      width: 100%;
-      padding: 0.5rem;
-      margin-top: 0.3rem;
-      border-radius: 8px;
+      padding: 15px;
       border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
     }
     button {
-      background-color: var(--main-color);
-      color: var(--white);
-      padding: 0.75rem;
+      background-color: #1e90ff;
+      color: white;
       border: none;
-      border-radius: 10px;
-      margin-top: 1.5rem;
-      width: 100%;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      border-radius: 5px;
     }
     button:hover {
-      background-color: var(--hover-color);
-    }
-    .result {
-      margin-top: 1.5rem;
-      font-size: 1.2rem;
-      text-align: center;
-      color: #333;
+      background-color: #007acc;
     }
   </style>
 </head>
 <body>
-  <h1>Үшбұрыштың ауданын есептеу</h1>
-  <div class="container">
-    <label for="base">Табан ұзындығы (a):</label>
-    <input type="number" id="base" placeholder="мысалы, 5" />
 
-    <label for="height">Биіктігі (h):</label>
-    <input type="number" id="height" placeholder="мысалы, 3" />
+  <h1>Үшбұрыш ауданын есептеу</h1>
 
-    <button onclick="calculateArea()">Есептеу</button>
+  <div class="method" onclick="showCalc('method1')">1. Биіктік арқылы (S = 1/2 × a × h)</div>
+  <div class="calc" id="method1">
+    <input type="number" id="a1" placeholder="a (қабырға)">
+    <input type="number" id="h1" placeholder="h (биіктік)">
+    <button onclick="calc1()">Есептеу</button>
+    <p id="res1"></p>
+  </div>
 
-    <div class="result" id="result"></div>
+  <div class="method" onclick="showCalc('method2')">2. Бұрыш арқылы (S = 1/2 × a × c × sin(B))</div>
+  <div class="calc" id="method2">
+    <input type="number" id="a2" placeholder="a">
+    <input type="number" id="c2" placeholder="c">
+    <input type="number" id="B2" placeholder="B (градус)">
+    <button onclick="calc2()">Есептеу</button>
+    <p id="res2"></p>
+  </div>
+
+  <div class="method" onclick="showCalc('method3')">3. Герон формуласы</div>
+  <div class="calc" id="method3">
+    <input type="number" id="a3" placeholder="a">
+    <input type="number" id="b3" placeholder="b">
+    <input type="number" id="c3" placeholder="c">
+    <button onclick="calc3()">Есептеу</button>
+    <p id="res3"></p>
+  </div>
+
+  <div class="method" onclick="showCalc('method4')">4. Іштей шеңбер арқылы (S = (r × p))</div>
+  <div class="calc" id="method4">
+    <input type="number" id="r4" placeholder="r (радиус)">
+    <input type="number" id="a4" placeholder="a">
+    <input type="number" id="b4" placeholder="b">
+    <input type="number" id="c4" placeholder="c">
+    <button onclick="calc4()">Есептеу</button>
+    <p id="res4"></p>
+  </div>
+
+  <div class="method" onclick="showCalc('method5')">5. Сырттай шеңбер арқылы (S = abc / 4R)</div>
+  <div class="calc" id="method5">
+    <input type="number" id="a5" placeholder="a">
+    <input type="number" id="b5" placeholder="b">
+    <input type="number" id="c5" placeholder="c">
+    <input type="number" id="R5" placeholder="R (радиус)">
+    <button onclick="calc5()">Есептеу</button>
+    <p id="res5"></p>
+  </div>
+
+  <div class="method" onclick="showCalc('method6')">6. Бір қабырға және екі бұрыш (S = a² × sinB × sinC / 2sinA)</div>
+  <div class="calc" id="method6">
+    <input type="number" id="a6" placeholder="a">
+    <input type="number" id="B6" placeholder="B (градус)">
+    <input type="number" id="C6" placeholder="C (градус)">
+    <input type="number" id="A6" placeholder="A (градус)">
+    <button onclick="calc6()">Есептеу</button>
+    <p id="res6"></p>
+  </div>
+
+  <div class="method" onclick="showCalc('method7')">7. Тангенс арқылы (S = c² × tgA × tgB / 2(tgA + tgB))</div>
+  <div class="calc" id="method7">
+    <input type="number" id="c7" placeholder="c">
+    <input type="number" id="A7" placeholder="A (градус)">
+    <input type="number" id="B7" placeholder="B (градус)">
+    <button onclick="calc7()">Есептеу</button>
+    <p id="res7"></p>
   </div>
 
   <script>
-    function calculateArea() {
-      const base = parseFloat(document.getElementById('base').value);
-      const height = parseFloat(document.getElementById('height').value);
-      const resultDiv = document.getElementById('result');
+    function showCalc(id) {
+      document.querySelectorAll('.calc').forEach(el => el.style.display = 'none');
+      document.getElementById(id).style.display = 'block';
+    }
 
-      if (isNaN(base) || isNaN(height) || base <= 0 || height <= 0) {
-        resultDiv.textContent = 'Қате: Дұрыс сандар енгізіңіз!';
-        resultDiv.style.color = 'red';
-        return;
-      }
+    function calc1() {
+      const a = parseFloat(document.getElementById('a1').value);
+      const h = parseFloat(document.getElementById('h1').value);
+      document.getElementById('res1').innerText = 'S = ' + (0.5 * a * h).toFixed(2);
+    }
 
-      const area = 0.5 * base * height;
-      resultDiv.textContent = `Үшбұрыш ауданы: ${area.toFixed(2)} кв. бірлік`;
-      resultDiv.style.color = 'green';
+    function calc2() {
+      const a = parseFloat(document.getElementById('a2').value);
+      const c = parseFloat(document.getElementById('c2').value);
+      const B = parseFloat(document.getElementById('B2').value) * Math.PI / 180;
+      document.getElementById('res2').innerText = 'S = ' + (0.5 * a * c * Math.sin(B)).toFixed(2);
+    }
+
+    function calc3() {
+      const a = parseFloat(document.getElementById('a3').value);
+      const b = parseFloat(document.getElementById('b3').value);
+      const c = parseFloat(document.getElementById('c3').value);
+      const p = (a + b + c) / 2;
+      const s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+      document.getElementById('res3').innerText = 'S = ' + s.toFixed(2);
+    }
+
+    function calc4() {
+      const r = parseFloat(document.getElementById('r4').value);
+      const a = parseFloat(document.getElementById('a4').value);
+      const b = parseFloat(document.getElementById('b4').value);
+      const c = parseFloat(document.getElementById('c4').value);
+      const p = (a + b + c) / 2;
+      document.getElementById('res4').innerText = 'S = ' + (r * p).toFixed(2);
+    }
+
+    function calc5() {
+      const a = parseFloat(document.getElementById('a5').value);
+      const b = parseFloat(document.getElementById('b5').value);
+      const c = parseFloat(document.getElementById('c5').value);
+      const R = parseFloat(document.getElementById('R5').value);
+      document.getElementById('res5').innerText = 'S = ' + ((a * b * c) / (4 * R)).toFixed(2);
+    }
+
+    function calc6() {
+      const a = parseFloat(document.getElementById('a6').value);
+      const B = parseFloat(document.getElementById('B6').value) * Math.PI / 180;
+      const C = parseFloat(document.getElementById('C6').value) * Math.PI / 180;
+      const A = parseFloat(document.getElementById('A6').value) * Math.PI / 180;
+      const S = (a * a * Math.sin(B) * Math.sin(C)) / (2 * Math.sin(A));
+      document.getElementById('res6').innerText = 'S = ' + S.toFixed(2);
+    }
+
+    function calc7() {
+      const c = parseFloat(document.getElementById('c7').value);
+      const A = parseFloat(document.getElementById('A7').value) * Math.PI / 180;
+      const B = parseFloat(document.getElementById('B7').value) * Math.PI / 180;
+      const S = (c * c * Math.tan(A) * Math.tan(B)) / (2 * (Math.tan(A) + Math.tan(B)));
+      document.getElementById('res7').innerText = 'S = ' + S.toFixed(2);
     }
   </script>
 </body>
