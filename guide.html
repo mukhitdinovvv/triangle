@@ -1,25 +1,67 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="kk">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Үшбұрыш формулалар жинағы</title>
   <style>
-    body {
+    /* Сброс отступов и базовая стилизация */
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
-    iframe {
-      flex: 1;
-      border: none;
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #111;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+    }
+
+    .iframe-container {
+      position: relative;
       width: 100%;
+      padding-bottom: 140%; /* Соотношение сторон */
+      height: 0;
+      overflow: hidden;
+    }
+
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (min-width: 768px) {
+      .iframe-container {
+        padding-bottom: 80%; /* Менее вытянуто на ПК */
+      }
     }
   </style>
 </head>
 <body>
-  <iframe src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true"></iframe>
+
+  <header>
+    <h1>Үшбұрыш формулалар жинағы</h1>
+  </header>
+
+  <div class="iframe-container">
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vReCchOJvA_-e_6_NRZ_u-7LdgYHuK7jCxS-QkL1sYzAE__mVQpJMXVebhZe5GoyA/pub?embedded=true"></iframe>
+  </div>
+
 </body>
 </html>
