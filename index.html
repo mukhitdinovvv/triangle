@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Үшбұрыш</title>
+  <style>
+    :root {
+      --main-color: #2e8b57;
+      --hover-color: #246b45;
+      --error-color: #c0392b;
+      --white: #fff;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0fff0;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: var(--white);
+      width: 100%;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      margin-top: 3rem;
+      padding: 2rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+    }
+
+    .input {
+      width: 100%;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .button {
+      margin-top: 1.5rem;
+      padding: 1rem 2rem;
+      background-color: var(--main-color);
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: var(--hover-color);
+    }
+
+    .error {
+      color: var(--error-color);
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Бағдарламаны қолдану үшін админнен құпия сөзді сатып алыңыз
+  </header>
+
+  <div class="container">
+    <input type="text" id="accessCode" class="input" placeholder="Кодты енгізіңіз">
+    <button class="button" onclick="checkCode()">Кіру</button>
+    <div id="errorMessage" class="error" style="display: none;">Құпия сөз дұрыс емес!</div>
+  </div>
+
+  <script>
+    function checkCode() {
+      const code = document.getElementById('accessCode').value.trim();
+      const errorDiv = document.getElementById('errorMessage');
+
+      if (code === "ushburish_GuLfariza_2025") {
+        window.location.href = "app.html";
+      } else {
+        errorDiv.style.display = "block";
+      }
+    }
+  </script>
+
+</body>
+</html>
